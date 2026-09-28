@@ -12,7 +12,11 @@ public enum DropInteractionMode
 public class MouseForce : MonoBehaviour
 {
     public static DropInteractionMode CurrentMode { get; private set; } = DropInteractionMode.None;
-
+    
+    [Header("웹(WebGL) 전용 물리 보정")]
+    // [설정] 웹 브라우저 환경에서만 적용할 추가 힘 배율 (PC와 똑같은 손맛으로 뻥튀기)
+    [SerializeField] private float webForceMultiplier = 1.8f;
+    
     [Header("밀어내기 설정")]
     [Tooltip("마우스 영향 반경 (기존 2.0 -> 3.0 ~ 3.5 추천)")]
     public float influenceRadius = 3.5f; 
@@ -113,6 +117,14 @@ public class MouseForce : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(currentMousePosition, influenceRadius, dropLayer);
         bool pushedAnyDrop = false;
 
+        // [핵심] PC 환경(에디터 및 PC 빌드)에서는 기존 그대로 1.0배 보존!
+        // 오직 웹 브라우저(WebGL) 빌드 환경에서만 webForceMultiplier(1.8배) 부스트 가동!
+#if UNITY_WEBGL && !UNITY_EDITOR
+        float platformBoost = webForceMultiplier;
+#else
+        float platformBoost = 1.0f;
+#endif
+        
         foreach (Collider2D hit in hits)
         {
             if (hit.TryGetComponent<OilDrop>(out var drop))
@@ -132,9 +144,11 @@ public class MouseForce : MonoBehaviour
                 // 3. [핵심] 테두리 끝에서도 최소 35%의 힘을 보장하여 굼뜸 방지
                 float strength = Mathf.Lerp(minEdgeStrength, 1.0f, curvedT);
                 
-                Vector2 pushDirection = awayVector.normalized;
-                Vector2 repulsion = pushDirection * (repulsionForce * strength);
-                Vector2 swipe = mouseVelocity * (swipeForceMultiplier * strength);
+                Vector2 pushDirection = awayVector.normalized;          
+                
+                // [핵심] 프레임 보정치(frameCompensate)를 곱해 60fps 웹에서도 에디터와 동일한 힘 발휘!
+                Vector2 repulsion = pushDirection * (repulsionForce * strength * platformBoost);
+                Vector2 swipe = mouseVelocity * (swipeForceMultiplier * strength * platformBoost );
 
                 drop.Push(repulsion + swipe, pushDirection);
                 pushedAnyDrop = true;
