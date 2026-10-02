@@ -5,13 +5,17 @@
 # 🍜 라멘 오일 크래프트 (Ramen Oil Craft)
 > **표면장력과 기하학적 부피 보존 법칙을 응용한 2D 유체 물리 퍼즐 게임**
 
+
+
+
+
 - **개발 기간:** 2026.09 (약 2주)
 - **개발 인원:** 1인 개발 (기획, 프로그래밍, 툴 제작)
 - **개발 환경:** Unity 6, URP 2D, C#, New Input System, Feel
 - **프로젝트 링크:**
-  - 🎮 [웹 브라우저 즉시 플레이 (itch.io)] <!-- 실제 링크 입력 -->
-  - 🎬 [30초 핵심 시연 영상 (YouTube)] <!-- 실제 링크 입력 -->
-  - 💻 [소스 코드 저장소 (GitHub)] <!-- 실제 링크 입력 -->
+  <img width="1000" height="563" alt="trim(1)" src="https://github.com/user-attachments/assets/1bd929eb-07b4-4a96-b384-df87f8bfddc0" />
+  <img width="1000" height="563" alt="trim2 - Trim" src="https://github.com/user-attachments/assets/4e72f13b-4eb0-4c69-a5cb-a6ec3b931528" />
+
 
 ---
 
