@@ -9,10 +9,9 @@
 - **開発規模:** 個人開発 1名 (ゲームデザイン、クライアント実装、エディターツール制作)
 - **開発環境:** Unity 6, URP 2D, C#, New Input System, Feel
 - **プロジェクトリンク:**
-  - 🎮 [ブラウザで今すぐプレイ (itch.io)] <!-- リンク設定 -->
-  - 🎬 [30秒コアゲームプレイ動画 (YouTube)] <!-- リンク設定 -->
-  - 💻 [ソースコードリポジトリ (GitHub)] <!-- リンク設定 -->
-
+  <img width="1000" height="563" alt="trim(1)" src="https://github.com/user-attachments/assets/1bd929eb-07b4-4a96-b384-df87f8bfddc0" />
+  <img width="1000" height="563" alt="trim2 - Trim" src="https://github.com/user-attachments/assets/4e72f13b-4eb0-4c69-a5cb-a6ec3b931528" />
+  (バランス調整中です！)
 ---
 
 ### 📦 サードパーティ製アセットのライセンスについて (License Notice)
